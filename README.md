@@ -17,12 +17,11 @@ about the background of the Rust library on
 the [Open Web blog page](https://blog.openweb.nl/blog/confluent-schema-registry-and-rust).
 
 You can find me on [Twitter](https://twitter.com/GKlijs)
-and [LinkedIn](https://www.linkedin.com/in/gerard-klijs-416b3744/). Currently I'm working
-for [Open Web](https://www.openweb.nl/), as this is mostly a consultancy company, I work for several companies via them,
-currently for [Mendix](https://www.mendix.com/company/), a low code platform.
+and [LinkedIn](https://www.linkedin.com/in/%F0%9F%92%BBgerard-klijs%F0%9F%A6%80-416b3744/). Currently I'm working
+for [AxonIQ](https://www.axoniq.io/), mostly working on the [Axon Framework](https://github.com/AxonFramework/AxonFramework)
 
 As you might have guessed frontend isn't my strong suit. I do plan to have something more fancy at some time in the
 future trough. Likely using [Bulma](https://bulma.io/) just like for the [pokequiz](https://www.pokequiz.gklijs.tech/) I
-once made.
+once made. I also track my bass progression, or stagnation [here](https://bass.gklijs.tech/).
 
 </article>
