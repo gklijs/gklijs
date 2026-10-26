@@ -2,6 +2,10 @@
 
 # Github profile page for Gerard Klijs
 
+Site: [gklijs.tech](https://gklijs.tech), blog: [blog.gklijs.tech](https://blog.gklijs.tech), mail: info@gklijs.tech.
+
+My main project at the moment is [skilj](https://github.com/gklijs/SkilJ), a Rust library for event-sourced applications on Postgres.
+
 I've been doing Java and Kotlin for most of my career. Doing Clojure and Rust in my free time, and dabbled a bit with
 Node.js. I have experience with several types of API's. Using REST based on OpenAPI, GraphQL, and async API's based on
 Kafka in formats like Protobuf and Cloud Events. For [BKES](https://github.com/gklijs/bkes) I used gRPC. I created and
@@ -18,10 +22,8 @@ the [Open Web blog page](https://blog.openweb.nl/blog/confluent-schema-registry-
 
 You can find me on [Twitter](https://twitter.com/GKlijs)
 and [LinkedIn](https://www.linkedin.com/in/%F0%9F%92%BBgerard-klijs%F0%9F%A6%80-416b3744/). Currently I'm working
-for [AxonIQ](https://www.axoniq.io/), mostly working on the [Axon Framework](https://github.com/AxonFramework/AxonFramework)
+as a software engineer at [Alliander](https://www.alliander.com/).
 
-As you might have guessed frontend isn't my strong suit. I do plan to have something more fancy at some time in the
-future trough. Likely using [Bulma](https://bulma.io/) just like for the [pokequiz](https://www.pokequiz.gklijs.tech/) I
-once made. I also track my bass progression, or stagnation [here](https://bass.gklijs.tech/).
+I also track my bass progression, or stagnation [here](https://bass.gklijs.tech/).
 
 </article>

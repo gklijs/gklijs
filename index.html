@@ -110,27 +110,26 @@
         .blog .go::after { content: " →"; display: inline-block; transition: transform .2s; }
         .blog:hover .go::after { transform: translateX(6px); }
 
-        .blog .emoji {
-            position: absolute;
-            right: 28px;
-            top: 18px;
-            font-size: 4.5rem;
-            opacity: .9;
+        .blog { display: grid; grid-template-columns: 1fr 240px; gap: 28px; align-items: center; }
+
+        .blog .batman {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transform: rotate(3deg);
+            transition: transform .3s;
         }
 
-        .blog:hover .emoji { animation: wiggle .5s ease-in-out; }
-
-        @keyframes wiggle {
-            25% { transform: rotate(-12deg); }
-            75% { transform: rotate(12deg); }
-        }
+        .blog:hover .batman { transform: rotate(-2deg) scale(1.06); }
 
         .cursor { animation: blink 1s steps(1) infinite; }
         @keyframes blink { 50% { opacity: 0; } }
 
         @media (prefers-reduced-motion: reduce) {
             .blog, .blog .go::after { transition: none; }
-            .blog:hover .emoji, .cursor { animation: none; }
+            .cursor { animation: none; }
+            .blog .batman { transition: none; }
         }
 
         /* sections */
@@ -169,14 +168,66 @@
         ul.plain li { padding: 10px 0; border-bottom: 1px solid var(--border); }
         ul.plain span { color: var(--muted); font-size: .9rem; }
 
+
+        /* featured project */
+        .feature {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+            padding: 32px;
+            margin-bottom: 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .feature h3 { margin: 0 0 4px; font-size: 1.6rem; }
+        .feature .kicker { color: var(--accent); font-size: .85rem; margin: 0 0 12px; }
+        .feature p { color: var(--muted); margin: 0 0 12px; }
+        .feature ul { color: var(--muted); margin: 0 0 16px; padding-left: 20px; }
+        .feature .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+        .feature .links a { border: 1px solid var(--border); border-radius: 999px; padding: 4px 14px; font-size: .9rem; }
+        .feature .links a:hover { border-color: var(--accent-2); text-decoration: none; }
+        .feature img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border); display: block; }
+
+        .code { position: relative; }
+        .code pre {
+            margin: 0;
+            padding: 14px 16px;
+            overflow-x: auto;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: .82rem;
+            line-height: 1.5;
+            color: var(--text);
+        }
+        .code button {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font: inherit;
+            font-size: .75rem;
+            padding: 2px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--muted);
+            cursor: pointer;
+        }
+        .code button:hover { color: var(--text); border-color: var(--accent-2); }
+
+        @media (max-width: 760px) { .feature { grid-template-columns: 1fr; padding: 20px; } }
+
         footer { color: var(--muted); font-size: .9rem; text-align: center; padding: 32px 16px; }
 
         @media (max-width: 640px) {
             .hero { flex-direction: column; text-align: center; padding-top: 40px; }
             .socials { justify-content: center; }
             h1 { font-size: 2.1rem; }
-            .blog .emoji { font-size: 3rem; right: 16px; top: 12px; }
-            .blog { padding: 32px 20px; }
+            .blog { padding: 24px 20px; grid-template-columns: 1fr; }
+            .blog .batman { max-width: 280px; }
         }
     </style>
 </head>
@@ -203,14 +254,45 @@
     </header>
 
     <a class="blog" href="https://blog.gklijs.tech/">
-        <span class="emoji" aria-hidden="true">✍️</span>
+        <img class="batman" src="images/batman.webp" alt="LEGO Batman with a grappling gun, aimed at you" width="632" height="421" loading="lazy">
+        <div class="text">
         <div class="prompt mono">$ cd blog<span class="cursor">_</span></div>
         <h2>Words I typed, now with syntax highlighting</h2>
-        <p>Notes on Kafka, Rust, event sourcing and whatever bug ate my afternoon. Occasionally correct, always compiled.</p>
-        <span class="go">Read the blog</span>
+        <p>Notes on Kafka, Rust, event sourcing and whatever bug ate my afternoon. Occasionally correct, always compiled. I'm Batman, and so is my cape's CSS.</p>
+        <span class="go">Grapple over to the blog</span>
+        </div>
     </a>
 
     <h2 class="section">Projects</h2>
+    <section class="feature">
+        <div>
+            <p class="kicker mono">featured · pre-1.0 · MIT OR Apache-2.0</p>
+            <h3>skilj</h3>
+            <p>
+                A Rust library for event-sourced applications on Postgres. Define events and commands, and skilj
+                handles storage, consistency checks, and GraphQL and REST APIs.
+            </p>
+            <ul>
+                <li>Dynamic Consistency Boundaries: a command is decided against only the events it shares tags with, not a whole aggregate.</li>
+                <li>Per-person encryption and blind tags, so personal data can be forgotten.</li>
+                <li>Projections, snapshots, schedules, and bridges to Kafka, AMQP, NATS and Temporal.</li>
+            </ul>
+            <p>Try it with only Rust installed, no database to set up:</p>
+            <div class="code">
+                <pre id="skilj-cmd"><code>cargo install cargo-generate
+cargo generate --git https://github.com/gklijs/SkilJ.git \
+  templates/skilj-template --name my-wallet
+cd my-wallet &amp;&amp; cargo run --bin server</code></pre>
+                <button type="button" id="copy-skilj" class="mono">copy</button>
+            </div>
+            <div class="links">
+                <a href="https://github.com/gklijs/SkilJ" rel="nofollow">GitHub</a>
+                <a href="https://crates.io/crates/skilj" rel="nofollow">crates.io</a>
+                <a href="https://docs.rs/skilj" rel="nofollow">docs.rs</a>
+            </div>
+        </div>
+        <img src="images/skilj-quickstart.gif" alt="A generated skilj project starting with its own embedded Postgres, then accepting a deposit, rejecting a withdrawal larger than the balance, and accepting a smaller one" loading="lazy">
+    </section>
     <div class="grid">
         <a class="card" href="https://github.com/gklijs/schema_registry_converter" rel="nofollow">
             <h3>schema_registry_converter</h3>
@@ -230,7 +312,7 @@
         <a class="card" href="https://bass.gklijs.tech/" rel="nofollow">
             <h3>Bass progress</h3>
             <p>Tracking my bass progression, or stagnation.</p>
-            <div class="tags"><span>🎸</span></div>
+            <div class="tags"><span>🎸</span><span>progress, or stagnation</span></div>
         </a>
         <a class="card" href="https://github.com/gklijs/ksqlDB-GraphQL-poc/tree/just-persons" rel="nofollow">
             <h3>ksqlDB GraphQL PoC</h3>
@@ -246,6 +328,15 @@
 
     <h2 class="section">Talks</h2>
     <div class="grid">
+        <div class="card talk-video">
+            <a href="https://www.youtube.com/watch?v=cZeon-ZvVyk" rel="nofollow">
+                <img src="images/graphqlconf-2023.jpg" alt="Video thumbnail of the talk GraphQL and CQRS, a Perfect Fit?" loading="lazy">
+            </a>
+            <div>
+                <h3><a href="https://www.youtube.com/watch?v=cZeon-ZvVyk" rel="nofollow">GraphQL and CQRS, a perfect fit?</a></h3>
+                <p>GraphQLConf and GraphQL Summit 2023. <a href="https://static.sched.com/hosted_files/graphqlconf23/63/GraphQL+CQRS.pdf" rel="nofollow">Slides</a></p>
+            </div>
+        </div>
         <a class="card talk-video" href="https://www.youtube.com/watch?v=EN73NiR8xZI" rel="nofollow">
             <img src="images/graphql-summit.jpg" alt="Video thumbnail of the GraphQL Summit 2019 talk" loading="lazy">
             <div>
@@ -268,6 +359,15 @@
         <li><a href="https://dev.to/gklijs" rel="nofollow">More posts on Dev.to</a></li>
     </ul>
 </main>
-<footer>© Gerard Klijs</footer>
+<footer>© Gerard Klijs · Batman photo from the <a href="https://blog.gklijs.tech/">blog</a> · no capes were harmed</footer>
+<script>
+    document.getElementById("copy-skilj").addEventListener("click", function (e) {
+        var btn = e.currentTarget;
+        navigator.clipboard.writeText(document.getElementById("skilj-cmd").innerText).then(function () {
+            btn.textContent = "copied";
+            setTimeout(function () { btn.textContent = "copy"; }, 1500);
+        });
+    });
+</script>
 </body>
 </html>
