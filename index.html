@@ -110,7 +110,7 @@
         .blog .go::after { content: " →"; display: inline-block; transition: transform .2s; }
         .blog:hover .go::after { transform: translateX(6px); }
 
-        .blog { display: grid; grid-template-columns: 1fr 240px; gap: 28px; align-items: center; }
+        .blog { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 28px; align-items: center; }
 
         .blog .batman {
             width: 100%;
@@ -172,7 +172,7 @@
         /* featured project */
         .feature {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
             gap: 32px;
             align-items: center;
             padding: 32px;
@@ -218,7 +218,7 @@
         }
         .code button:hover { color: var(--text); border-color: var(--accent-2); }
 
-        @media (max-width: 760px) { .feature { grid-template-columns: 1fr; padding: 20px; } }
+        @media (max-width: 760px) { .feature { grid-template-columns: minmax(0, 1fr); padding: 20px; } }
 
         footer { color: var(--muted); font-size: .9rem; text-align: center; padding: 32px 16px; }
 
@@ -226,7 +226,7 @@
             .hero { flex-direction: column; text-align: center; padding-top: 40px; }
             .socials { justify-content: center; }
             h1 { font-size: 2.1rem; }
-            .blog { padding: 24px 20px; grid-template-columns: 1fr; }
+            .blog { padding: 24px 20px; grid-template-columns: minmax(0, 1fr); }
             .blog .batman { max-width: 280px; }
         }
     </style>
