@@ -1,37 +1,272 @@
-<article class="markdown-body entry-content container-lg" itemprop="text">
-    <h1>Intermediate profile page for Gerard Klijs</h1>
-    <p>
-        I've been doing Java and Kotlin for most of
-        my career. Doing Clojure and Rust in my free time, and dabbled a bit with Node.js.
-        I have experience with several types of API's. Using REST based on OpenAPI, GraphQL, and async API's based on
-        Kafka in formats like Protobuf and Cloud Events.
-        For <a href="https://github.com/gklijs/bkes" rel="nofollow">BKES</a> I used gRPC.
-        I created and maintain a Rust library to use schema registry
-        <a href="https://crates.io/crates/schema_registry_converter" rel="nofollow">schema_registry_converter</a>.
-    </p>
-    <p>
-        I've presented on using GraphQL with Apache Kafka at <a href="https://www.youtube.com/watch?v=EN73NiR8xZI"
-                                                                rel="nofollow">GraphQL Summit 2019</a>.
-        I also presented at Kafka Summit 2020 and Kafka Summit 2021, and some others.
-        I'm trying to write more blogs, I've written some at <a href="https://dev.to/gklijs" rel="nofollow">Dev.to</a>.
-        There are also two blogs I wrote in cooperation with Confluent,
-        <a href="https://www.confluent.io/blog/getting-started-with-rust-and-kafka/" rel="nofollow">
-            using Rust with Kafka</a> and
-        <a href="https://www.confluent.io/blog/intro-to-graphql-an-api-for-kafka-data/" rel="nofollow">
-            using GraphQL with Kafka</a>. There is also one about the background of the Rust library on the
-        <a href="https://blog.openweb.nl/blog/confluent-schema-registry-and-rust" rel="nofollow">
-            Open Web blog page</a>.
-    </p>
-    <p>You can find me on <a href="https://twitter.com/GKlijs" rel="nofollow">Twitter</a>
-        and <a href="https://www.linkedin.com/in/gerard-klijs-416b3744/" rel="nofollow">LinkedIn</a>. Currently I'm
-        working
-        for <a href="https://www.openweb.nl/" rel="nofollow">Open Web</a>, as this is mostly a consultancy company, I
-        work for several companies via them,
-        currently for <a href="https://www.mendix.com/company/" rel="nofollow">Mendix</a>, a low code platform.
-    </p>
-    <p>
-        As you might have guessed frontend isn't my strong suit. I do plan to have something more fancy at some time in
-        the future trough. Likely using <a href="https://bulma.io/" rel="nofollow">Bulma</a> just like for the
-        <a href="https://www.pokequiz.gklijs.tech/" rel="nofollow">pokequiz</a> I once made.
-    </p>
-</article>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gerard Klijs</title>
+    <meta name="description" content="Gerard Klijs, software engineer at Alliander. Java, Kotlin, Rust and Clojure, Kafka and GraphQL.">
+    <meta property="og:title" content="Gerard Klijs">
+    <meta property="og:description" content="Software engineer. Java, Kotlin, Rust, Kafka, GraphQL.">
+    <meta property="og:image" content="https://gklijs.tech/images/avatar.png">
+    <link rel="icon" href="images/avatar.png">
+    <style>
+        :root {
+            --bg: #0d1117;
+            --surface: #161b22;
+            --border: #30363d;
+            --text: #e6edf3;
+            --muted: #8b949e;
+            --accent: #f0883e;
+            --accent-2: #58a6ff;
+            color-scheme: dark;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #f6f8fa;
+                --surface: #ffffff;
+                --border: #d0d7de;
+                --text: #1f2328;
+                --muted: #59636e;
+                --accent: #c2410c;
+                --accent-2: #0969da;
+                color-scheme: light;
+            }
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        }
+
+        a { color: var(--accent-2); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        main { max-width: 960px; margin: 0 auto; padding: 0 16px 64px; }
+
+        .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+
+        /* hero */
+        .hero {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            padding: 64px 0 40px;
+        }
+
+        .hero img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            flex: none;
+        }
+
+        h1 { margin: 0; font-size: 2.6rem; line-height: 1.1; }
+        .role { color: var(--accent); margin: 8px 0 12px; }
+        .hero p { margin: 0 0 16px; color: var(--muted); max-width: 52ch; }
+
+        .socials { display: flex; flex-wrap: wrap; gap: 8px; }
+
+        .socials a, .tags span {
+            border: 1px solid var(--border);
+            background: var(--surface);
+            border-radius: 999px;
+            padding: 4px 14px;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        .socials a:hover { border-color: var(--accent-2); text-decoration: none; }
+
+        /* blog feature */
+        .blog {
+            display: block;
+            position: relative;
+            overflow: hidden;
+            margin: 8px 0 56px;
+            padding: 40px 32px;
+            border-radius: 16px;
+            border: 1px solid var(--accent);
+            background: linear-gradient(135deg, var(--surface), color-mix(in srgb, var(--accent) 18%, var(--surface)));
+            color: var(--text);
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .blog:hover {
+            transform: translateY(-4px) rotate(-.4deg);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, .35);
+            text-decoration: none;
+        }
+
+        .blog .prompt { color: var(--accent); font-size: .95rem; }
+        .blog h2 { margin: 8px 0; font-size: 2rem; }
+        .blog p { margin: 0 0 16px; color: var(--muted); max-width: 54ch; }
+        .blog .go { color: var(--accent); font-weight: 600; }
+        .blog .go::after { content: " →"; display: inline-block; transition: transform .2s; }
+        .blog:hover .go::after { transform: translateX(6px); }
+
+        .blog .emoji {
+            position: absolute;
+            right: 28px;
+            top: 18px;
+            font-size: 4.5rem;
+            opacity: .9;
+        }
+
+        .blog:hover .emoji { animation: wiggle .5s ease-in-out; }
+
+        @keyframes wiggle {
+            25% { transform: rotate(-12deg); }
+            75% { transform: rotate(12deg); }
+        }
+
+        .cursor { animation: blink 1s steps(1) infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        @media (prefers-reduced-motion: reduce) {
+            .blog, .blog .go::after { transition: none; }
+            .blog:hover .emoji, .cursor { animation: none; }
+        }
+
+        /* sections */
+        h2.section { font-size: 1.4rem; margin: 48px 0 16px; }
+        h2.section::before { content: "# "; color: var(--accent); }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            color: var(--text);
+            transition: border-color .2s, transform .2s;
+        }
+
+        a.card:hover { border-color: var(--accent-2); transform: translateY(-2px); text-decoration: none; }
+        .card h3 { margin: 0; font-size: 1.05rem; }
+        .card p { margin: 0; color: var(--muted); font-size: .95rem; flex: 1; }
+        .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+        .tags span { padding: 0 10px; font-size: .78rem; color: var(--muted); }
+
+        .talk-video { padding: 0; overflow: hidden; }
+        .talk-video img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+        .talk-video div { padding: 16px 20px 20px; }
+
+        ul.plain { list-style: none; margin: 0; padding: 0; }
+        ul.plain li { padding: 10px 0; border-bottom: 1px solid var(--border); }
+        ul.plain span { color: var(--muted); font-size: .9rem; }
+
+        footer { color: var(--muted); font-size: .9rem; text-align: center; padding: 32px 16px; }
+
+        @media (max-width: 640px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 40px; }
+            .socials { justify-content: center; }
+            h1 { font-size: 2.1rem; }
+            .blog .emoji { font-size: 3rem; right: 16px; top: 12px; }
+            .blog { padding: 32px 20px; }
+        }
+    </style>
+</head>
+<body>
+<main>
+    <header class="hero">
+        <img src="images/avatar.png" alt="Portrait of Gerard Klijs" width="160" height="160">
+        <div>
+            <h1>Gerard Klijs</h1>
+            <p class="role mono">software engineer @ <a href="https://www.alliander.com/" rel="nofollow">Alliander</a></p>
+            <p>
+                Java and Kotlin for most of my career, Rust and Clojure in my free time. APIs of many kinds:
+                REST, GraphQL, gRPC and async APIs on Kafka with Protobuf and Cloud Events.
+            </p>
+            <nav class="socials" aria-label="Social links">
+                <a href="https://github.com/gklijs" rel="nofollow">GitHub</a>
+                <a href="https://www.linkedin.com/in/gerard-klijs-416b3744/" rel="nofollow">LinkedIn</a>
+                <a href="https://twitter.com/GKlijs" rel="nofollow">X</a>
+                <a href="https://dev.to/gklijs" rel="nofollow">Dev.to</a>
+                <a href="https://crates.io/crates/schema_registry_converter" rel="nofollow">crates.io</a>
+            </nav>
+        </div>
+    </header>
+
+    <a class="blog" href="https://blog.gklijs.tech/">
+        <span class="emoji" aria-hidden="true">✍️</span>
+        <div class="prompt mono">$ cd blog<span class="cursor">_</span></div>
+        <h2>Words I typed, now with syntax highlighting</h2>
+        <p>Notes on Kafka, Rust, event sourcing and whatever bug ate my afternoon. Occasionally correct, always compiled.</p>
+        <span class="go">Read the blog</span>
+    </a>
+
+    <h2 class="section">Projects</h2>
+    <div class="grid">
+        <a class="card" href="https://github.com/gklijs/schema_registry_converter" rel="nofollow">
+            <h3>schema_registry_converter</h3>
+            <p>Rust crate for Confluent Schema Registry, with Avro, Protobuf and JSON Schema, async and blocking.</p>
+            <div class="tags"><span>Rust</span><span>Kafka</span></div>
+        </a>
+        <a class="card" href="https://github.com/gklijs/bkes" rel="nofollow">
+            <h3>BKES</h3>
+            <p>Binary Kafka backed Event Store, with a gRPC API.</p>
+            <div class="tags"><span>Rust</span><span>gRPC</span><span>Kafka</span></div>
+        </a>
+        <a class="card" href="https://www.pokequiz.gklijs.tech/" rel="nofollow">
+            <h3>Pokequiz</h3>
+            <p>A little quiz about Pokémon, made for fun.</p>
+            <div class="tags"><span>Web</span><span>Bulma</span></div>
+        </a>
+        <a class="card" href="https://bass.gklijs.tech/" rel="nofollow">
+            <h3>Bass progress</h3>
+            <p>Tracking my bass progression, or stagnation.</p>
+            <div class="tags"><span>🎸</span></div>
+        </a>
+        <a class="card" href="https://github.com/gklijs/ksqlDB-GraphQL-poc/tree/just-persons" rel="nofollow">
+            <h3>ksqlDB GraphQL PoC</h3>
+            <p>A simple setup showing how ksqlDB can be used with GraphQL.</p>
+            <div class="tags"><span>Rust</span><span>GraphQL</span><span>Kafka</span></div>
+        </a>
+        <a class="card" href="https://github.com/gklijs/kotlin-coroutines-demo" rel="nofollow">
+            <h3>Kotlin coroutines demo</h3>
+            <p>Simulating different kinds of API calls, and handling them nicely with coroutines.</p>
+            <div class="tags"><span>Kotlin</span></div>
+        </a>
+    </div>
+
+    <h2 class="section">Talks</h2>
+    <div class="grid">
+        <a class="card talk-video" href="https://www.youtube.com/watch?v=EN73NiR8xZI" rel="nofollow">
+            <img src="images/graphql-summit.jpg" alt="Video thumbnail of the GraphQL Summit 2019 talk" loading="lazy">
+            <div>
+                <h3>GraphQL Summit 2019</h3>
+                <p>Using GraphQL with Apache Kafka.</p>
+            </div>
+        </a>
+        <div class="card">
+            <h3>Kafka Summit 2020 &amp; 2021</h3>
+            <p>Also presented at both editions, and at some other events.</p>
+        </div>
+    </div>
+
+    <h2 class="section">Writing</h2>
+    <ul class="plain">
+        <li><a href="https://blog.gklijs.tech/" rel="nofollow">blog.gklijs.tech</a> <span>my own blog</span></li>
+        <li><a href="https://www.confluent.io/blog/getting-started-with-rust-and-kafka/" rel="nofollow">Getting started with Rust and Kafka</a> <span>Confluent</span></li>
+        <li><a href="https://www.confluent.io/blog/intro-to-graphql-an-api-for-kafka-data/" rel="nofollow">Intro to GraphQL, an API for Kafka data</a> <span>Confluent</span></li>
+        <li><a href="https://blog.openweb.nl/blog/confluent-schema-registry-and-rust" rel="nofollow">Confluent Schema Registry and Rust</a> <span>Open Web</span></li>
+        <li><a href="https://dev.to/gklijs" rel="nofollow">More posts on Dev.to</a></li>
+    </ul>
+</main>
+<footer>© Gerard Klijs</footer>
+</body>
+</html>
